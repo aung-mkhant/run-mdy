@@ -1,0 +1,60 @@
+@import url("main.css");
+:root {
+  --primary-color: #f2f2f2;
+  --secondary-color: #0c0c0c;
+  --accent-color: #f2613f;
+
+  --black: #0c0c0c;
+  --white: #f5f5f5;
+
+  /* margin for anything involving headers */
+  --header-margin: 3rem;
+  /* margin for anything involving images */
+  --image-margin: 2rem;
+  --link-color: #008bff;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Initial state: Hidden and slightly lower */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity; /* Optimizes performance */
+}
+
+/* Final state: Visible and in position */
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn {
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 15px;
+  background: #f2613f;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #f2613f;
+  background-image: -webkit-linear-gradient(top, #f2613f, #bf4c32);
+  background-image: -moz-linear-gradient(top, #f2613f, #bf4c32);
+  background-image: -ms-linear-gradient(top, #f2613f, #bf4c32);
+  background-image: -o-linear-gradient(top, #f2613f, #bf4c32);
+  background-image: linear-gradient(to bottom, #f2613f, #bf4c32);
+  text-decoration: none;
+}
+
+.btn:focus {
+  outline: none;
+}
