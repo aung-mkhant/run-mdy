@@ -1,9 +1,8 @@
-/* TODO: read more, read less button */
-/* TODOS: add animations */
-/* TODO: implement wiping effect for before and after earthquake */
+/* TODO: add margin between texts */
+/* TOOD: fix hero image scrolling  */
+/* TODO: reenable darken  */
 
 /* <Header Styling> */
-
 .navbar {
   padding: 15px 30px;
   width: 100%;
@@ -302,19 +301,24 @@ section#tours .container {
 }
 
 section#tours img.tour-image {
-  filter: grayscale(0.3) brightness(0.6);
   width: 100%;
   height: 100%;
   object-fit: cover;
   position: absolute;
   top: 0;
   left: 0;
-  transition: opacity 3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* filter: grayscale(0.3) brightness(0.6); */
+  transition:
+    opacity 3s cubic-bezier(0.25, 0.8, 0.25, 1),
+    filter 1.2s ease-in-out;
   z-index: -1;
 }
 .tour-image.fade-out {
   opacity: 0;
   /* filter: brightness(0.6) grayscale(0.4); */
+}
+.tour-image.is-darkened {
+  filter: brightness(0.5);
 }
 
 /* </Tours Section Styling> */
@@ -616,6 +620,9 @@ section#aid .aid-image-wrapper {
   line-height: 1rem;
   letter-spacing: 0.1em;
   padding: 4rem 1.5rem;
+  background: var(--secondary-color);
+}
+.footer-list-item.bg-loaded {
   background: url("../assets/images/form-image.webp") no-repeat top right/cover;
 }
 

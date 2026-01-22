@@ -1,4 +1,32 @@
-// Javascript library for lazy loading background images
+// Javascript for lazy loading background images
+
+//   Intersection Observer for lazy loading background images
+// Function to load background image
+const lazyLoadImage = (element) => {
+  element.classList.add("bg-loaded");
+};
+
+// Create one IntersectionObserver
+const observer = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        lazyLoadImage(entry.target); // load the image
+        observer.unobserve(entry.target); // stop observing
+      }
+    });
+  },
+  {
+    root: null, // viewport
+    rootMargin: "200px 0px",
+    threshold: 0.1, // trigger when 10% is visible
+  },
+);
+
+// Observe all elements with .lazy-bg class
+document.querySelectorAll(".lazy-bg").forEach((el) => {
+  observer.observe(el);
+});
 
 // Javascript for side menu
 const openSideMenu = () => {
@@ -40,7 +68,6 @@ function expandText() {
   moreText.classList.contains("hide")
     ? (expandButton.innerHTML = "Read more")
     : (expandButton.innerHTML = "Read less");
-  expandButton.innerHTML = "Read less";
 }
 
 // Javascript for background image change in tour section
@@ -110,8 +137,6 @@ function showCards(n) {
 }
 
 // Javascript for showing before and after images
-// build scene
-
 const controller = new ScrollMagic.Controller();
 var scene = new ScrollMagic.Scene({
   triggerElement: "section#aid",
@@ -126,40 +151,17 @@ scene.on("progress", function (event) {
   document.querySelector(".aid-before").style.width = finalWidth + "%";
 });
 
-// Javascript for Fancybox lightbox
-const galleryImages = [
-  { file: "2lions.webp", cap: "Two Lions Statues" },
-  { file: "shwenandaw.jpg", cap: "Shwenandaw Monastery" },
-  { file: "ubein.jpg", cap: "U Bein Bridge at Sunset" },
-  { file: "mandalay.jpeg", cap: "Mandalay View" },
-  { file: "tour1.jpg", cap: "Tour Highlights" },
-  { file: "kuthodaw2.jpg", cap: "Kuthodaw Pagoda" },
-  { file: "tour3.jpg", cap: "Our Tour Group" },
-  { file: "bamboo.jpg", cap: "Bamboo Workshop" },
-  { file: "bike.jpg", cap: "U Bein Bridge View" },
-  { file: "broom.jpg", cap: "Broom Making" },
-  { file: "monks.jpg", cap: "Monks in Mandalay" },
-  { file: "myatheindan.jpg", cap: "Myatheindan Pagoda" },
-  { file: "painting.jpg", cap: "'Phoe Wa Yote' Doll Making" },
-  { file: "pottery.jpg", cap: "Local Pottery" },
-  { file: "shop.jpg", cap: "Mandalay Market" },
-];
-
-const formattedGallery = galleryImages.map((img) => ({
-  src: `../assets/images/${img.file}`,
-  thumb: `../assets/images/${img.file}`,
-  caption: img.cap,
-}));
-
-document.getElementById("gallery-icon").addEventListener("click", (e) => {
-  e.preventDefault();
-
-  Fancybox.show(formattedGallery, {
-    Infinite: true,
-    transitionEffect: "fade",
-    // DragToClose: false //
-  });
+document.getElementById("gallery-icon").addEventListener("click", () => {
+  Fancybox.show(
+    [...document.querySelectorAll('[data-fancybox="gallery"]')].map((el) => ({
+      src: el.getAttribute("href") || el.getAttribute("src"),
+      caption: el.dataset.caption || "",
+    })),
+    { infinite: true },
+  );
 });
+
+// Javascript for Scroll Reveal Animations
 
 // Find all elements you want to animate
 const revealElements = document.querySelectorAll(".reveal-on-scroll");
@@ -171,5 +173,18 @@ revealElements.forEach((element) => {
     reverse: false,
   })
     .setClassToggle(element, "is-visible") // Adds the class to trigger the CSS
+    .addTo(controller);
+});
+
+// JavaScript for darken Animation on view
+const tourImagesToBlur = document.querySelectorAll(".tour-image");
+
+tourImagesToBlur.forEach((img) => {
+  new ScrollMagic.Scene({
+    triggerElement: img,
+    triggerHook: 0.5, // Trigger when the image reaches the center
+    duration: "70%", // How long the darken stays before reversing (40% of viewport height)
+  })
+    .setClassToggle(img, "is-darkened") // Add/remove the darken class
     .addTo(controller);
 });

@@ -52,10 +52,7 @@
             Discover the cultural heart of Myanmar with curated tours and local
             guides.
           </p>
-          <!-- <div class="input-container">
-            <input type="text" />
-            <button type="submit">Search</button>
-          </div> -->
+
         </div>
       </section>
 
@@ -63,16 +60,29 @@
         <h2 class="reveal-on-scroll">The Beauty of Mandalay</h2>
 
         <div class="gallery reveal-on-scroll">
-          <img src="./assets/images/mandalay.jpeg" alt="Mandalay"/>
+          <img src="./assets/images/mandalay.jpeg"fetchpriority="high" alt="Mandalay"/>
           <div class="inner-gallery">
             
-            <img src="./assets/images/kuthodaw.jpg"loading="lazy" class="inner-image-1" data-fancybox="gallery"  alt="Mandalay" />
-    <img src="./assets/images/ubein.jpg"loading="lazy" class="inner-image-2" data-fancybox="gallery" alt="U Bein" />
-            <img src="./assets/images/shwenandaw.jpg"loading="lazy" class="inner-image-3" data-fancybox="gallery" alt="Shwe Nan Daw" />
-            <img src="./assets/images/2lions.webp"loading="lazy" class="inner-image-4" data-fancybox="gallery"  alt="2 lions" />
+            <img src="./assets/images/kuthodaw.jpg"loading="lazy" class="inner-image-1" data-fancybox="gallery" data-caption="Mandalay View" alt="Mandalay" />
+    <img src="./assets/images/ubein.jpg"loading="lazy" class="inner-image-2" data-fancybox="gallery"data-caption="U Bein Bridge at Sunset" alt="U Bein" />
+            <img src="./assets/images/shwenandaw.jpg"loading="lazy" class="inner-image-3" data-fancybox="gallery"data-caption="Shwenandaw Monastery" alt="Shwe Nan Daw" />
+            <img src="./assets/images/2lions.webp"loading="lazy" class="inner-image-4" data-fancybox="gallery"data-caption="Two Lions Statues"  alt="2 lions" />
           </div>
-          <img src="./assets/images/gallery.png"loading="lazy" id="gallery-icon" alt="2 lions"/>
+          <img src="./assets/images/gallery.png"loading="lazy" id="gallery-icon" alt="Open Gallery"/>
         </div>
+        <div id="hidden-gallery" style="display: none;" aria-hidden="true">
+  <a href="./assets/images/tour1.jpg" data-fancybox="gallery" data-caption="Tour Highlights"></a>
+  <a href="./assets/images/kuthodaw2.jpg" data-fancybox="gallery" data-caption="Kuthodaw Pagoda"></a>
+  <a href="./assets/images/tour3.jpg" data-fancybox="gallery" data-caption="Our Tour Group"></a>
+  <a href="./assets/images/bamboo.jpg" data-fancybox="gallery" data-caption="Bamboo Workshop"></a>
+  <a href="./assets/images/bike.jpg" data-fancybox="gallery" data-caption="U Bein Bridge View"></a>
+  <a href="./assets/images/broom.jpg" data-fancybox="gallery" data-caption="Broom Making"></a>
+  <a href="./assets/images/monks.jpg" data-fancybox="gallery" data-caption="Monks in Mandalay"></a>
+  <a href="./assets/images/myatheindan.jpg" data-fancybox="gallery" data-caption="Myatheindan Pagoda"></a>
+  <a href="./assets/images/painting.jpg" data-fancybox="gallery" data-caption="'Phoe Wa Yote' Doll Making"></a>
+  <a href="./assets/images/pottery.jpg" data-fancybox="gallery" data-caption="Local Pottery"></a>
+  <a href="./assets/images/shop.jpg" data-fancybox="gallery" data-caption="Mandalay Market"></a>
+</div>
 
         <div class="container reveal-on-scroll">
           <p>
@@ -134,6 +144,7 @@
     loading="lazy"
                 src="./assets/images/tour1.jpg"
                 alt="client image"
+                
               
               />
                <img
@@ -142,13 +153,14 @@
                 src="./assets/images/tour2.jpg"
                 alt="client image"
                 
+                
               />
                <img
                loading="lazy"
                class="tour-image fade-out"
                 src="./assets/images/tour3.jpg"
                 alt="client image"
-               
+                
               />
       </section>
         
@@ -260,7 +272,7 @@
 
     <footer class="footer" id="contact">
       <div class="footer-container">
-        <div class="footer-list-item">
+        <div class="footer-list-item lazy-bg">
           <a href="/">
             <div class="brand-logo reveal-on-scroll">Mandalay Travel</div>
           </a>
@@ -270,7 +282,7 @@
           <a class="footer-list-hover" href="#aid">Disaster Aid </a>
         </div>
 
-        <!-- Newsletter form -->
+        <!-- Form -->
         <form aria-label="Newsletter subscription form" class="form">
           <p class="text-xs tracking-widest max-w-xs reveal-on-scroll">
             Reach out to book a tour or ask a question.
@@ -312,8 +324,6 @@
     </footer>
 <script src="js/ScrollMagic.min.js" defer></script>
     <script src="js/index.js" defer></script>
-    <!-- <script src="js/yall.umd.js" defer></script> -->
     <script src="js/fancybox.umd.js"></script>
-
   </body>
 </html>
