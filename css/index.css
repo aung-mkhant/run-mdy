@@ -1,8 +1,44 @@
 /* TODO: add margin between texts */
-/* TOOD: fix hero image scrolling  */
-/* TODO: reenable darken  */
+/* TODO: fix hero image scrolling  */
+/*TODO: Add link styling on hover*/
 
 /* <Header Styling> */
+
+.sidemenu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateY(-100%);
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  padding: 30px;
+  z-index: 3;
+  cursor: pointer;
+  background: var(--secondary-color);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.sidemenu.active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+html.no-scroll, body.no-scroll {
+  overflow: hidden;
+  margin: 0;
+  height: 100%;
+}
+.sidemenu a {
+  text-decoration: none;
+  color: var(--primary-color);
+  text-align: center;
+  font-size: 1.5rem;
+}
+.sidemenu a:hover {
+  color: var(--accent-color);
+}
 .navbar {
   padding: 15px 30px;
   width: 100%;
@@ -34,6 +70,10 @@ a:has(.brand-logo) {
 .navbar .nav-links a {
   color: var(--primary-color);
   text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+.navbar .nav-links a:hover {
+  color: var(--accent-color);
 }
 
 /* <Hamburger Menu Styling> */
@@ -46,7 +86,7 @@ a:has(.brand-logo) {
   gap: 1rem;
 }
 .navbar .hamburger-menu p {
-  color: var(--secondary-color);
+  color: var(--primary-color);
   font-size: clamp(1rem, 5vw, 1.5rem);
   font-weight: 500;
   transition: color 0.3s ease-in-out;
@@ -65,7 +105,7 @@ a:has(.brand-logo) {
   position: absolute;
   height: 4px; /* thinner lines */
   width: 100%;
-  background: var(--secondary-color);
+  background: var(--primary-color);
   border-radius: 4px;
   opacity: 1;
   left: 0;
@@ -132,7 +172,10 @@ section#home {
 }
 
 .fixed-div {
-  background: url("../assets/images/hero1.jpg") no-repeat center center;
+  background-image: url("../assets/images/hero1.jpg");
+  background-color: var(--secondary-color);
+  background-repeat: no-repeat;
+  background-position: center center;
   filter: brightness(0.7);
   position: fixed;
 
@@ -145,8 +188,7 @@ section#home {
   height: 100vh;
 
   background-size: cover;
-
-  z-index: -1;
+  z-index: -3;
 }
 .hero-heading {
   font-size: clamp(5rem, 10vw, 8rem);
@@ -320,7 +362,15 @@ section#tours img.tour-image {
 .tour-image.is-darkened {
   filter: brightness(0.5);
 }
-
+div.tour-background {
+  position: absolute;
+  background-color: var(--secondary-color);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
 /* </Tours Section Styling> */
 
 /* </Main Content Styling> */
@@ -450,7 +500,7 @@ section#testimonials .lead {
   transition: background-color 0.6s ease;
 }
 
-.active,
+.dot.active,
 .dot:hover {
   background-color: #717171;
 }
@@ -625,7 +675,6 @@ section#aid .aid-image-wrapper {
 .footer-list-item.bg-loaded {
   background: url("../assets/images/form-image.webp") no-repeat top right/cover;
 }
-
 @media (max-width: 768px) {
   .footer-list-item {
     display: none;
@@ -647,6 +696,8 @@ section#aid .aid-image-wrapper {
 }
 a.footer-list-hover:hover {
   text-decoration: underline;
+  color: var(--accent-color);
+  text-underline-offset: 4px;
 }
 
 .form-item {

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mandalay Travel</title>
+    <title>Run Mdy</title>
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/fancybox.css" />
@@ -15,9 +15,19 @@
   </head> 
   <body>
     <header>
+
+      <div class="sidemenu">
+        <a href="#explore">Explore</a>
+        <a href="#tours">Tours</a>
+        <a href="#testimonials">Testimonials</a>
+        <a href="#aid">Disaster Aid</a>
+        <a href="#contact">Contact us</a>
+      </div>
+
+      <div id="overlay"></div>
       <div class="navbar header-inner">
         <a href="/">
-          <div class="brand-logo">Mandalay Travel</div>
+          <div class="brand-logo">Run Mdy</div>
         </a>
 
         <nav
@@ -73,7 +83,7 @@
         <div id="hidden-gallery" style="display: none;" aria-hidden="true">
   <a href="./assets/images/tour1.jpg" data-fancybox="gallery" data-caption="Tour Highlights"></a>
   <a href="./assets/images/kuthodaw2.jpg" data-fancybox="gallery" data-caption="Kuthodaw Pagoda"></a>
-  <a href="./assets/images/tour3.jpg" data-fancybox="gallery" data-caption="Our Tour Group"></a>
+  <a href="./assets/images/tour3.jpg" data-fancybox="gallery" data-caption="Tour Highlights"></a>
   <a href="./assets/images/bamboo.jpg" data-fancybox="gallery" data-caption="Bamboo Workshop"></a>
   <a href="./assets/images/bike.jpg" data-fancybox="gallery" data-caption="U Bein Bridge View"></a>
   <a href="./assets/images/broom.jpg" data-fancybox="gallery" data-caption="Broom Making"></a>
@@ -144,24 +154,21 @@
     loading="lazy"
                 src="./assets/images/tour1.jpg"
                 alt="client image"
-                
-              
               />
                <img
                loading="lazy"
                class="tour-image fade-out"
                 src="./assets/images/tour2.jpg"
                 alt="client image"
-                
-                
               />
                <img
                loading="lazy"
                class="tour-image fade-out"
                 src="./assets/images/tour3.jpg"
                 alt="client image"
-                
-              />
+              >/
+
+        <div class="tour-background"></div>
       </section>
         
       <section id="testimonials" aria-label="Testimonials">
@@ -180,7 +187,7 @@
               />
               <blockquote>
                 “An unforgettable journey through Mandalay's rich culture and
-                history. Highly recommend Mandalay Travel!”
+                history. Highly recommend Run Mdy!”
               </blockquote>
               <cite>- Sarah L.</cite>
             </article>
@@ -249,7 +256,7 @@
             <p class="description reveal-on-scroll">
               Recent earthquakes have caused significant damage in various
               regions of Myanmar, leaving many communities in urgent need of
-              assistance. Mandalay Travel is committed to aiding relief efforts
+              assistance. Run Mdy is committed to aiding relief efforts
               by partnering with local organizations to deliver food, medical
               supplies, and shelter to those affected. 
             </p>
@@ -274,7 +281,7 @@
       <div class="footer-container">
         <div class="footer-list-item lazy-bg">
           <a href="/">
-            <div class="brand-logo reveal-on-scroll">Mandalay Travel</div>
+            <div class="brand-logo reveal-on-scroll">Run Mdy</div>
           </a>
           <a class="footer-list-hover" href="#explore"> Explore </a>
           <a class="footer-list-hover" href="#tours"> Tours </a>
@@ -315,7 +322,7 @@
       </div>
 
       <div class="footer-bottom">
-        <span> © 2026 Mandalay Travel. </span>
+        <span> © 2026 Run Mdy. </span>
         <div class="footer-link">
           <a class="footer-link-item" href="#"> PRIVACY POLICY </a>
           <a class="footer-link-item" href="#"> TERMS OF USE </a>

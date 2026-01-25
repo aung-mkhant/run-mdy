@@ -1,12 +1,8 @@
-// Javascript for lazy loading background images
 
 //   Intersection Observer for lazy loading background images
-// Function to load background image
 const lazyLoadImage = (element) => {
   element.classList.add("bg-loaded");
 };
-
-// Create one IntersectionObserver
 const observer = new IntersectionObserver(
   (entries, observer) => {
     entries.forEach((entry) => {
@@ -22,34 +18,63 @@ const observer = new IntersectionObserver(
     threshold: 0.1, // trigger when 10% is visible
   },
 );
-
 // Observe all elements with .lazy-bg class
 document.querySelectorAll(".lazy-bg").forEach((el) => {
   observer.observe(el);
 });
 
+
 // Javascript for side menu
-const openSideMenu = () => {
-  document.querySelector(".sidemenu").classList.toggle("active");
-
-  document.querySelector("#main-content").classList.toggle("dimmed");
-};
+const sideMenu = document.querySelector(".sidemenu");
 const hamburgerMenu = document.querySelector("#nav-icon1");
-hamburgerMenu.addEventListener("click", () => {
-  hamburgerMenu.classList.toggle("open");
-  openSideMenu();
-});
-document.addEventListener("click", (e) => {
-  const sideMenu = document.querySelector(".sidemenu");
-  const hamburger = document.querySelector("#nav-icon1");
 
-  // If the click target is NOT inside the sidemenu or the hamburger icon
-  if (!sideMenu.contains(e.target) && !hamburger.contains(e.target)) {
-    hamburger.classList.remove("open");
-    sideMenu.classList.remove("active");
-    document.querySelector("#main-content").classList.remove("dimmed");
-  }
+const toggleSideMenu = () => {
+  sideMenu.classList.toggle("active");
+  hamburgerMenu.classList.toggle("open");
+  // Targets both <html> and <body> to disable scrolling
+  [document.documentElement, document.body].forEach(el => {
+    el.classList.toggle('no-scroll');
+  });
+};
+
+// Stop being unable to scroll when window width reaches over 1200px
+window.addEventListener("resize", () => {
+  [document.documentElement, document.body].forEach(el => {
+    if (window.innerWidth> 1200 && sideMenu.classList.contains("active") && el.classList.contains("no-scroll")) {
+      toggleSideMenu();
+    }
+
+  });
+})
+hamburgerMenu.addEventListener("click", () => {
+  toggleSideMenu();
 });
+
+// Close sidemenu when a link is clicked
+const sideMenuLinks = document.querySelectorAll(".sidemenu a");
+sideMenuLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    // Only trigger if the menu is actually open
+    if (sideMenu.classList.contains("active")) {
+      // Reuse your existing function to toggle everything back to normal
+      toggleSideMenu();
+      // Also reset the hamburger icon animation
+      hamburgerMenu.classList.remove("open");
+    }
+  });
+});
+// Close sidemenu when document is clicked elsewhere
+// Disabled because it's not needed for now
+// document.addEventListener("click", (e) => {
+//   // If the click target is NOT inside the sidemenu or the hamburger icon
+//   if (sideMenu.classList.contains("open")) {
+//     if (!sideMenu.contains(e.target) && !hamburger.contains(e.target)) {
+//       hamburgerMenu.classList.remove("open");
+//       sideMenu.classList.remove("active");
+//       overlayElement.classList.remove("dimmed");
+//     }
+//   }
+// });
 
 // Javascript for Read More button
 const expandButton = document.getElementById("expand-button");
@@ -188,3 +213,4 @@ tourImagesToBlur.forEach((img) => {
     .setClassToggle(img, "is-darkened") // Add/remove the darken class
     .addTo(controller);
 });
+
