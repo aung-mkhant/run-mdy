@@ -63,18 +63,6 @@ sideMenuLinks.forEach((link) => {
     }
   });
 });
-// Close sidemenu when document is clicked elsewhere
-// Disabled because it's not needed for now
-// document.addEventListener("click", (e) => {
-//   // If the click target is NOT inside the sidemenu or the hamburger icon
-//   if (sideMenu.classList.contains("open")) {
-//     if (!sideMenu.contains(e.target) && !hamburger.contains(e.target)) {
-//       hamburgerMenu.classList.remove("open");
-//       sideMenu.classList.remove("active");
-//       overlayElement.classList.remove("dimmed");
-//     }
-//   }
-// });
 
 // Javascript for Read More button
 const expandButton = document.getElementById("expand-button");
@@ -203,6 +191,7 @@ revealElements.forEach((element) => {
 
 // JavaScript for darken Animation on view
 const tourImagesToBlur = document.querySelectorAll(".tour-image");
+const tourOverlay = document.querySelector(".tour-overlay");
 
 tourImagesToBlur.forEach((img) => {
   new ScrollMagic.Scene({
@@ -210,7 +199,7 @@ tourImagesToBlur.forEach((img) => {
     triggerHook: 0.5, // Trigger when the image reaches the center
     duration: "70%", // How long the darken stays before reversing (40% of viewport height)
   })
-    .setClassToggle(img, "is-darkened") // Add/remove the darken class
+    .setClassToggle(tourOverlay, "is-darkened") // Add/remove the darken class
     .addTo(controller);
 });
 
